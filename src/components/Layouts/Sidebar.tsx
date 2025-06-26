@@ -67,7 +67,7 @@ const Sidebar = () => {
   const handleLogout = () => {
 
       dispatch(logout());
-      toast.success('Sign-in successful');
+      toast.success('Logout successful');
  setTimeout(() => {
     Navigate('/signin');
        }, 2000);
@@ -291,7 +291,7 @@ const Sidebar = () => {
                                                     color:"white"
                                                 }}
                                                 />
-                                                <span className="ltr:pl-3 rtl:pr-3 text-white dark:text-[#506690] dark:group-hover:text-white-dark">{t('Setting')}</span>
+                                                <span className="ltr:pl-3 rtl:pr-3 text-white dark:text-[#506690] dark:group-hover:text-white-dark">{t('Settings')}</span>
                                             </div>
                                         </NavLink>
                                     </li>
@@ -337,7 +337,7 @@ const Sidebar = () => {
                                                 color: 'white',
                                                 fontWeight: 'bold',
                                                 padding: '10px 20px',
-                                                borderRadius: '14px',
+                                                borderRadius: '10px',
                                                 cursor: 'pointer',
                                                 width: '100%',
                                                 textAlign: 'center',

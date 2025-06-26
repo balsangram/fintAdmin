@@ -59,7 +59,7 @@ interface DashboardPieChartProps {
     height?: number; // 👈 New optional height prop
 }
 
-const defaultColors = ['#16A34A', '#DC2626','#848484' , '#CA8A04'];
+const defaultColors = ['#B9E4E5', '#344C6A','#848484' , '#CA8A04'];
 
 const RADIAN = Math.PI / 180;
 

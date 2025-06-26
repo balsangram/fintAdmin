@@ -14,6 +14,14 @@ const sampleData = [
   { name: 'Gym', value: 300 },
   { name: 'Travel', value: 250 },
   { name: 'Electronics', value: 350 },
+    { name: 'Food', value: 400 },
+      { name: 'Food', value: 400 },
+  { name: 'Gym', value: 300 },
+  { name: 'Travel', value: 250 },
+  { name: 'Electronics', value: 350 },
+    { name: 'Food', value: 400 },
+    
+  
 ];
 
 const colors = ['#6C5CE7', '#00B894', '#D63031',  '#15803D'];

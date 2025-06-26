@@ -10,7 +10,6 @@ interface PieDataItem {
 
 const pieData: PieDataItem[] = [
     { name: 'Added', value: 400 },
-    { name: 'Viewed', value: 300 },
     { name: 'Expired', value: 300 },
     { name: 'Deleted', value: 100 },
 ];
@@ -55,7 +54,7 @@ function Ads() {
             <div className="text-center">
                 <DashboardPieChart data={pieData} />
                 <p>
-                    <span className="text-green-600">● Added</span> <span className="text-yellow-600">● Viewed</span> <span className="text-gray-600">● Expired</span>{' '}
+                    <span className="text-green-600">● Added</span> <span className="text-gray-600">● Expired</span>{' '}
                     <span className="text-red-600">● Deleted</span>
                 </p>
             </div>

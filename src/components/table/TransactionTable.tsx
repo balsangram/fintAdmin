@@ -133,7 +133,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({ transactions, onApp
                         <th className="px-4 py-2 border">Credited To</th>
                         <th className="px-4 py-2 border">Status</th>
                         <th className="px-4 py-2 border">Date</th>
-                        <th className="px-4 py-2 border">Permissions</th>
+                        <th className="px-4 py-2 border text-center">Permissions</th>
                     </tr>
                 </thead>
                 <tbody>

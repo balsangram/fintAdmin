@@ -32,13 +32,13 @@ const users: User[] = [
     {
         rollNo: '101',
         userName: 'sangram01',
-        accountType: 'Admin',
+        accountType: 'Fint User',
         createdAt: '2024-06-20',
     },
     {
         rollNo: '102',
         userName: 'ravik',
-        accountType: 'User',
+        accountType: 'Fint Ventures',
         createdAt: '2024-05-10',
     },
 ];

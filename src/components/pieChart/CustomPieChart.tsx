@@ -18,9 +18,22 @@ interface CustomPieChartProps {
 
 const CustomPieChart: React.FC<CustomPieChartProps> = ({
   data,
-  colors = ['#0088FE', '#FF8042', '#00C49F', '#FFBB28',],
+  // colors = ['#0088FE', '#FF8042', '#00C49F', '#FFBB28',],
+  colors = [
+  '#0088FE', // Blue
+  '#00C49F', // Teal
+  '#FFBB28', // Yellow
+  '#FF8042', // Orange
+  '#A28EFF', // Purple
+  '#FF5E7E', // Pinkish Red
+  '#00D8A7', // Mint Green
+  '#FF6E40', // Coral
+  '#36CFC9', // Cyan
+  '#9E9E9E', // Gray
+],
+
   width = 300,
-  height = 200,
+  height = 350,
   innerRadius = 60,
   outerRadius = 80,
   layout = 'horizontal',
