@@ -48,6 +48,7 @@ import fintLogo from '../../../public/assets/fintImg/logo/fintLogo.jpeg';
 import adminProfile from '../../../public/assets/fintImg/person/admin.jpg';
 import { logout } from '../../store/authSlice';
 import { toast, ToastContainer } from 'react-toastify';
+import { logoutAdmin } from '../../api/auth.api';
 
 const Sidebar = () => {
     const [currentMenu, setCurrentMenu] = useState<string>('');
@@ -64,15 +65,20 @@ const Sidebar = () => {
     };
   const Navigate = useNavigate();
 
-  const handleLogout = () => {
+ const handleLogout = async () => {
+    try {
+      await logoutAdmin(); // ✅ Call the backend logout API
 
-      dispatch(logout());
+      dispatch(logout()); // ✅ Clear Redux/auth state
       toast.success('Logout successful');
- setTimeout(() => {
-    Navigate('/signin');
-       }, 2000);
-  };
 
+      setTimeout(() => {
+        Navigate('/signin'); // ✅ Correct usage of navigate
+      }, 2000);
+    } catch (error: any) {
+      toast.error(error.message || 'Logout failed');
+    }
+  };
 
     useEffect(() => {
         const selector = document.querySelector('.sidebar ul a[href="' + window.location.pathname + '"]');

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { resetPasswordAdmin } from '../../api/all.api';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Password() {
   const [oldPassword, setOldPassword] = useState('');
@@ -10,32 +13,54 @@ function Password() {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setError('');
     setSuccess('');
 
     if (!oldPassword || !newPassword || !confirmPassword) {
-      setError('❌ All fields are required');
+      toast.error('❌ All fields are required');
+      // setError('❌ All fields are required');
       return;
     }
 
     if (newPassword.length < 8) {
-      setError('❌ New password must be at least 8 characters long');
+      // setError('❌ New password must be at least 8 characters long');
+       toast.error('❌ New password must be at least 8 characters long');
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      setError('❌ New password and confirm password do not match');
+      // setError('❌ New password and confirm password do not match');
+        toast.error('❌ New password and confirm password do not match');
       return;
     }
 
-    // Simulate password change logic
-    setSuccess('✅ Password changed successfully');
+    // try {
+    const response = await resetPasswordAdmin({
+      oldPassword,
+      newPassword,
+    });
+
+    console.log("✅ Password changed:", response);
+     toast.success('✅ Password changed successfully');
+    // setSuccess('✅ Password changed successfully');
     setOldPassword('');
     setNewPassword('');
     setConfirmPassword('');
+    setTimeout(() => {
+      setSuccess('');
+      navigate("/setting");
+    }, 3000);
+
+
+    // } catch (err: any) {
+    //   console.error("❌ Password change failed:", err);
+    //   setError(err.message || '❌ Something went wrong');
+    // }
   };
+
 
   return (
     <div className="min-h-[70h] bg-gray-100 p-6">
@@ -95,7 +120,7 @@ function Password() {
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black"
                   aria-label={showNewPassword ? 'Hide password' : 'Show password'}
                 >
-                  {showNewPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size= {20} />}
+                  {showNewPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}
                 </button>
               </div>
             </div>

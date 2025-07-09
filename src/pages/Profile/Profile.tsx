@@ -1,5 +1,7 @@
-import React, { useState, useRef } from 'react';
+import axios from 'axios';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaEdit } from 'react-icons/fa';
+import { editAdminProfile, getAdminProfile } from '../../api/all.api';
 
 // Define interface for form data
 interface FormData {
@@ -13,12 +15,12 @@ interface FormData {
 
 const Profile: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
-        firstName: 'Ravi',
-        lastName: 'Kumar',
-        email: 'ravi.kumar@example.com',
-        address: '123, MG Road, Bengaluru',
-        pincode: '560001',
-        mobileNo: '9876543210',
+            firstName: '',
+    lastName: '',
+    email: '',
+    address: '',
+    pincode: '',
+    mobileNo: '',
     });
     const [profileImage, setProfileImage] = useState<string>('/assets/fintImg/person/admin.jpg');
     const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -32,6 +34,21 @@ const Profile: React.FC = () => {
         }));
     };
 
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const response = await getAdminProfile(); // ✅ this returns full axios response
+                console.log(response, "response");
+
+                // ✅ Assuming structure: { data: { statusCode, data, message, success } }
+                setFormData(response.data.data); // ✅ Access nested data here
+            } catch (error) {
+                console.log("❌ Failed to fetch profile:", error);
+            }
+        };
+
+        fetchProfile();
+    }, []);
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
@@ -47,37 +64,35 @@ const Profile: React.FC = () => {
         setIsEditing(!isEditing);
     };
 
-    const handleSave = () => {
-        setIsEditing(false);
-        // Perform save logic here (e.g., API call to save formData and profileImage)
-    };
+const handleSave = async () => {
+    try {
+        console.log("📤 Sending profile update...");
+        const response = await editAdminProfile(formData); // Send updated form data
+        console.log("✅ Profile updated successfully:", response.data);
 
-    const handleDiscard = () => {
+        setFormData(response.data.data); // Update formData with response (in case backend altered it)
         setIsEditing(false);
-        setFormData({
-            firstName: 'Ravi',
-            lastName: 'Kumar',
-            email: 'ravi.kumar@example.com',
-            address: '123, MG Road, Bengaluru',
-            pincode: '560001',
-            mobileNo: '9876543210',
-        });
-        setProfileImage('/assets/fintImg/person/admin.jpg');
-    };
+    } catch (error) {
+        console.error("❌ Failed to update profile:", error);
+        // Optionally show user feedback here
+    }
+};
+
+const handleDiscard = async () => {
+    try {
+        const response = await getAdminProfile(); // ✅ Fetch latest profile
+        setFormData(response.data.data);
+        setProfileImage('/assets/fintImg/person/admin.jpg'); // Optional: fetch from API if dynamic
+    } catch (error) {
+        console.error("❌ Failed to reset profile:", error);
+    } finally {
+        setIsEditing(false);
+    }
+};
 
     return (
         <div className="fullBackground m-0 p-0">
-            {/* <nav className="flex text-gray-500 font-semibold dark:text-white-dark space-x-2 px-4 sm:px-6">
-                <ol className="flex items-center">
-                    <li>
-                        <button className="hover:text-gray-500/70 dark:hover:text-white-dark/70">Home</button>
-                    </li>
-                    <li className="mx-2">/</li>
-                    <li>
-                        <button className="hover:text-gray-500/70 dark:hover:text-white-dark/70">Profile</button>
-                    </li>
-                </ol>
-            </nav> */}
+
             <div className="mx-auto p-4 sm:p-6   dark:bg-gray-900 mt-6 sm:mt-10 ">
                 <div className="flex flex-col items-center mb-6 relative">
                     <img src={profileImage} alt="Profile" className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover mb-2" />

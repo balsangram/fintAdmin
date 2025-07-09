@@ -4,12 +4,15 @@ import { IRootState } from './store';
 import { toggleRTL, toggleTheme, toggleLocale, toggleMenu, toggleLayout, toggleAnimation, toggleNavbar, toggleSemidark } from './store/themeConfigSlice';
 import store from './store';
 import './index.css'; // Ensure your styles are imported
-import { useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
+// import axiosInstance from './api/axiosInstance';
 
 function App({ children }: PropsWithChildren) {
     const themeConfig = useSelector((state: IRootState) => state.themeConfig);
     const dispatch = useDispatch();
-    const Navigate = useNavigate();
+    // const navigate = useNavigate();
+    // const location = useLocation();
+
 
     useEffect(() => {
         dispatch(toggleTheme(localStorage.getItem('theme') || themeConfig.theme));
@@ -22,17 +25,27 @@ function App({ children }: PropsWithChildren) {
         dispatch(toggleSemidark(localStorage.getItem('semidark') || themeConfig.semidark));
     }, [dispatch, themeConfig.theme, themeConfig.menu, themeConfig.layout, themeConfig.rtlClass, themeConfig.animation, themeConfig.navbar, themeConfig.locale, themeConfig.semidark]);
 
+ // ✅ Auth check using cookies
+//   useEffect(() => {
+//     const publicRoutes = ['/signin', '/forgot-password', '/privacy-policy', '/terms-of-use'];
+//     const isPublicRoute = publicRoutes.includes(location.pathname);
+//     console.log("🚀 ~ useEffect ~ isPublicRoute:", isPublicRoute)
 
-      useEffect(() => {
-        const token = localStorage.getItem('token');
-        const publicRoutes = ['/signin','/forgot-password', '/privacy-policy', '/terms-of-use']; // ✅ Include public routes
-
-        const isPublicRoute = publicRoutes.includes(location.pathname);
-
-        if (!token && !isPublicRoute) {
-            Navigate('/signin');
-        }
-    }, [location, Navigate]);
+//     if (!isPublicRoute) {
+//       axiosInstance
+//         .get('/admin/profile') // protected route that needs valid access token
+//         .catch((error) => {
+//             console.log("111",error.response?.status);
+            
+//           if (error.response?.status === 403) {
+//             console.log("222");
+            
+//             navigate('/signin');
+//           }
+//           console.log("333")
+//         });
+//     }
+//   }, [location, navigate]);
     return (
         <div
             className={`${(store.getState().themeConfig.sidebar && 'toggle-sidebar') || ''} ${themeConfig.menu} ${themeConfig.layout} ${

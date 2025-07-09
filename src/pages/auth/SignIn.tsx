@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import img from '../../../public/assets/fintImg/logo/fint.jpg';
 import logoText from '../../../public/assets/fintImg/logo/logoText.jpg';
 import { setLogin } from '../../store/authSlice';
+import { loginAdmin } from '../../api/auth.api';
+import Button from '../../components/button/Button';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('admin@gmail.com');
@@ -15,8 +17,11 @@ const SignIn: React.FC = () => {
   const [error, setError] = useState('');
   const Navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
-  const handleSignIn = () => {
+
+  const handleSignIn = async () => {
+    setLoading(true);
     setError('');
 
     if (!email || !password) {
@@ -34,19 +39,29 @@ const SignIn: React.FC = () => {
       return;
     }
 
-    // Simulate login
-    const fakeToken = 'faketoken123';
-    const fakeUser = { email };
+    try {
+      console.log("login page");
 
-    localStorage.setItem('token', fakeToken);
-    localStorage.setItem('user', JSON.stringify(fakeUser));
-    dispatch(setLogin({ token: fakeToken, user: fakeUser }));
+      // 🧠 Call real API
+      const { user } = await loginAdmin({ email, password });
 
-    toast.success('Sign-in successful');
+      // 🗃️ Store in localStorage if needed (optional with cookie-based auth)
+      localStorage.setItem("user", JSON.stringify(user));
 
-    setTimeout(() => {
-      Navigate('/');
-    }, 2000);
+      // 🔁 Update Redux or state
+      dispatch(setLogin({ token: user.accessToken, user }));
+
+      toast.success("✅ Sign-in successful");
+
+      setTimeout(() => {
+        Navigate('/');
+      }, 2000);
+    } catch (err: any) {
+      // ❌ Show API error
+      const message = err?.message || "Login failed";
+      toast.error(`❌ ${message}`);
+    }
+    setLoading(false);
   };
 
   return (
@@ -103,13 +118,25 @@ const SignIn: React.FC = () => {
               {/* Error Message */}
               {error && <p className="text-red-600 text-sm font-serif">{error}</p>}
 
-              <button
+              {/* <button
                 onClick={handleSignIn}
                 className="w-full bg-black text-white px-4 py-2 rounded-md text-sm font-serif hover:bg-gray-800"
               >
                 Sign In
-              </button>
+              </button> */}
 
+              <Button
+                onClick={handleSignIn}
+                label="Submit"
+                bgColor="bg-gray-800"
+                hoverColor="hover:bg-gray-700"
+                textColor="text-white"
+                height="h-12"
+                width="w-full"
+                textSize="text-lg"
+                rounded="rounded-full"
+                loading={loading}
+              />
               <Link to="/forgot-password" className="text-sm font-serif text-gray-600 hover:text-black text-center">
                 Forgot Password?
               </Link>
