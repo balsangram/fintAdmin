@@ -32,7 +32,7 @@ interface ResetPasswordPayload {
 }
 
 export const resetPasswordAdmin = async (payload: ResetPasswordPayload): Promise<any> => {
-  console.log("reset password");
+  // console.log("reset password");
   
   try {
     const response = await axios.post('/admin/reset-password', payload);
@@ -48,5 +48,37 @@ export const resetPasswordAdmin = async (payload: ResetPasswordPayload): Promise
 };
 
 //  ==============================================================================================
+                                          // Advertisement 
+// ===============================================================================================
 
 
+export const getAdminAdvertisements = async () => {
+  try {
+    const response = await axios.get("/admin/advertisements");
+    console.log("🚀 ~ getAdminAdvertisements ~ response:", response);
+    return response;
+  } catch (error) {
+    console.error("❌ Error fetching admin advertisements:", error);
+
+    // Optional: Re-throw if you want to handle it higher up
+    throw error;
+  }
+};
+// ===============================================================================================
+                                            // coupons 
+// ===============================================================================================
+export const getAllCoupons = async () =>{
+  try {
+    const response = await axios.get("/fint/coupons/display-all-coupons");
+    console.log("🚀 ~ getAllCoupons ~ response:", response);
+    return response.data; // ✅ RETURN the actual data
+  } catch (error) {
+    console.log("🚀 ~ getAllCoupons ~ error:", error)
+    throw error;
+  }
+}
+
+// ===============================================================================================
+// ===============================================================================================
+// ===============================================================================================
+// ===============================================================================================

@@ -55,12 +55,13 @@ const barChartData = [
 ];
 
 const tableSampleData = [
-  { id: 1, name: 'Alice', balance: 1200, paymentDate: '2025-06-17' },
-  { id: 2, name: 'Bob', balance: 800, paymentDate: '2025-06-15' },
-  { id: 3, name: 'Charlie', balance: 600, paymentDate: '2025-06-12' },
-  { id: 4, name: 'David', balance: 600, paymentDate: '2025-06-12' },
-  { id: 5, name: 'Eve', balance: 600, paymentDate: '2025-06-12' },
+  {  id: 1, name: 'Alice', to_name: 'Bob', balance: -500, paymentDate: '2025-07-10' },
+  {  id: 2, name: 'Charlie', to_name: 'David', balance: 1000, paymentDate: '2025-07-09' },
+  {  id: 3, name: 'Eve', to_name: 'Frank', balance: -200, paymentDate: '2025-07-08' },
+  {  id: 4, name: 'Grace', to_name: 'Heidi', balance: 1200, paymentDate: '2025-07-07' },
+  {  id: 5, name: 'Ivan', to_name: 'Judy', balance: -750, paymentDate: '2025-07-06' },
 ];
+
 
 const lineChartData = [
   { name: 'Page A', Fint: 4000, Ventures: 2400, amt: 2400 },
