@@ -98,7 +98,7 @@ const handleDiscard = async () => {
                     <img src={profileImage} alt="Profile" className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover mb-2" />
                     {isEditing && <input type="file" accept="image/*" ref={fileInputRef} onChange={handleImageChange} className="text-xs sm:text-sm text-gray-500 mt-2" />}
                     <button onClick={handleEditToggle} className="absolute top-0 right-0 p-2 text-gray-700 dark:text-white hover:text-gray-500" aria-label="Edit Profile">
-                        <FaEdit size={18} className="sm:w-5 sm:h-5" />
+                        {/* <FaEdit size={18} className="sm:w-5 sm:h-5" /> */}
                     </button>
                 </div>
 

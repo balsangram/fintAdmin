@@ -120,8 +120,8 @@ const SpendingTable: React.FC<Props> = ({ data }) => {
                                 onClick={handleAddCategory}
                                 disabled={!newCategory.trim()}
                                 className={`px-4 py-2 rounded-lg text-white transition ${newCategory.trim()
-                                        ? 'bg-[#0E0955] hover:bg-blue-700'
-                                        : 'bg-blue-300 cursor-not-allowed'
+                                    ? 'bg-[#0E0955] hover:bg-blue-700'
+                                    : 'bg-blue-300 cursor-not-allowed'
                                     }`}
                             >
                                 Submit
@@ -218,13 +218,13 @@ const SpendingTable: React.FC<Props> = ({ data }) => {
                                 onClick={openForm}
                                 className="bg-[#0E0955] text-white rounded-md px-4 py-2 hover:bg-[#0a0744] transition"
                             >
-                               <IoMdAddCircleOutline />
+                                {/* <IoMdAddCircleOutline /> */}
                             </button>
                             <button
                                 onClick={displayCategory}
                                 className="bg-[#0E0955] text-white rounded-md px-4 py-2 hover:bg-[#0a0744] transition"
                             >
-                                <MdEditDocument />
+                                {/* <MdEditDocument /> */}
                             </button>
                         </div>
                         <div className=' hidden sm:flex sm:gap-4'>
@@ -306,8 +306,8 @@ const SpendingTable: React.FC<Props> = ({ data }) => {
                                 key={i}
                                 onClick={() => setCurrentPage(i + 1)}
                                 className={`px-3 py-1 rounded border ${currentPage === i + 1
-                                        ? 'bg-blue-500 text-white'
-                                        : 'bg-white text-gray-700 hover:bg-gray-100'
+                                    ? 'bg-blue-500 text-white'
+                                    : 'bg-white text-gray-700 hover:bg-gray-100'
                                     }`}
                             >
                                 {i + 1}

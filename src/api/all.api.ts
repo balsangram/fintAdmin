@@ -33,7 +33,7 @@ interface ResetPasswordPayload {
 
 export const resetPasswordAdmin = async (payload: ResetPasswordPayload): Promise<any> => {
   // console.log("reset password");
-  
+
   try {
     const response = await axios.post('/admin/reset-password', payload);
     console.log("✅ Password reset successful:", response.data);
@@ -48,7 +48,7 @@ export const resetPasswordAdmin = async (payload: ResetPasswordPayload): Promise
 };
 
 //  ==============================================================================================
-                                          // Advertisement 
+// Advertisement 
 // ===============================================================================================
 
 
@@ -65,9 +65,9 @@ export const getAdminAdvertisements = async () => {
   }
 };
 // ===============================================================================================
-                                            // coupons 
+// coupons 
 // ===============================================================================================
-export const getAllCoupons = async () =>{
+export const getAllCoupons = async () => {
   try {
     const response = await axios.get("/fint/coupons/display-all-coupons");
     console.log("🚀 ~ getAllCoupons ~ response:", response);
@@ -81,4 +81,12 @@ export const getAllCoupons = async () =>{
 // ===============================================================================================
 // ===============================================================================================
 // ===============================================================================================
+// ===============================================================================================
+export const add_LinkLog = "/user/add-LinkLog";
+export const Home_Type_importance_id = "/user/get-user-Type-importance-id";
+export const Home_user_Type_importance = "/user/add-user-Type-importance";
+export const Stay_Updated = "/fint/cards/stay-updated";
+export const all_search = "/fint/search/all-search";
+// ===============================================================================================
+
 // ===============================================================================================

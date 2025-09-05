@@ -76,7 +76,7 @@ const ForgotPassword: React.FC = () => {
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black"
                   aria-label="Toggle new password visibility"
                 >
-                  {showPassword.new ? <FaRegEyeSlash size={18} /> : <FaRegEye size={18} />}
+                  {/* {showPassword.new ? <FaRegEyeSlash size={18} /> : <FaRegEye size={18} />} */}
                 </button>
               </div>
             </div>
@@ -101,7 +101,7 @@ const ForgotPassword: React.FC = () => {
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black"
                   aria-label="Toggle confirm password visibility"
                 >
-                  {showPassword.confirm ? <FaRegEyeSlash size={18} /> : <FaRegEye size={18} />}
+                  {/* {showPassword.confirm ? <FaRegEyeSlash size={18} /> : <FaRegEye size={18} />} */}
                 </button>
               </div>
             </div>

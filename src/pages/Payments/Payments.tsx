@@ -76,7 +76,7 @@ function Payments() {
 
             {/* Toggle Button */}
             <div className='hidden md:block absolute top-[3rem] right-[4rem]  cursor-pointer' onClick={toggleHeight}>
-                <MdOutlinePhotoSizeSelectSmall className=' text-2xl' />
+                {/* <MdOutlinePhotoSizeSelectSmall className=' text-2xl' /> */}
             </div>
 
             {/* Chart with transition */}

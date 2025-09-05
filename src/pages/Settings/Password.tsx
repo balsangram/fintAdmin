@@ -93,7 +93,7 @@ function Password() {
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black"
                   aria-label={showOldPassword ? 'Hide password' : 'Show password'}
                 >
-                  {showOldPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}
+                  {/* {showOldPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />} */}
                 </button>
               </div>
             </div>
@@ -120,7 +120,7 @@ function Password() {
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black"
                   aria-label={showNewPassword ? 'Hide password' : 'Show password'}
                 >
-                  {showNewPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}
+                  {/* {showNewPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />} */}
                 </button>
               </div>
             </div>
@@ -147,7 +147,7 @@ function Password() {
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-black"
                   aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
                 >
-                  {showConfirmPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />}
+                  {/* {showConfirmPassword ? <FaRegEyeSlash size={20} /> : <FaRegEye size={20} />} */}
                 </button>
               </div>
             </div>

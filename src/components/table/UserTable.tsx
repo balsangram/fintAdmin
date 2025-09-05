@@ -149,7 +149,7 @@ const UserTable: React.FC<Props> = ({ users }) => {
                                     <EyeOff className="cursor-pointer text-gray-500 hover:text-gray-700" size={18} onClick={() => toggleEye(index)} />
                                 )}
                                 <Pencil className="cursor-pointer text-green-500 hover:text-green-700" size={18} />
-                                <MdBlock className="cursor-pointer text-yellow-500 hover:text-yellow-700" size={18} />
+                                {/* <MdBlock className="cursor-pointer text-yellow-500 hover:text-yellow-700" size={18} /> */}
                                 <Trash2 className="cursor-pointer text-red-500 hover:text-red-700" size={18} />
                             </td>
                         </tr>

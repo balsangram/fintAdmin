@@ -2,7 +2,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { add_LinkLog, Home_Type_importance_id, Home_user_Type_importance } from "../../allapi/api";
+import { add_LinkLog, Home_Type_importance_id, Home_user_Type_importance } from "../../api/all.api";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 

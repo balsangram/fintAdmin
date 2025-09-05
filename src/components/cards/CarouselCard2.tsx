@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-import { add_LinkLog, Home_Type_importance_id, Home_user_Type_importance } from "../../allapi/api";
+import { add_LinkLog, Home_Type_importance_id, Home_user_Type_importance } from "../../api/all.api";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
@@ -104,7 +104,7 @@ const CarouselCard2: React.FC<CardProps> = ({ id, link = "#", name, img }) => {
           />
         ) : (
           <FavoriteBorderIcon
-           className="text-gray-300 "
+            className="text-gray-300 "
             onClick={(e) => {
               e.stopPropagation();
               toggleFavorite();
